@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Checkout</h1>
+<p>Total: ${{ "%.2f"|format(total) }}</p>
+<form action="{{ url_for('checkout') }}" method="POST">
+    <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="your_stripe_publishable_key"
+        data-amount="{{ total * 100 }}"
+        data-name="E-commerce Purchase"
+        data-description="Purchase from our store"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-currency="usd">
+    </script>
+</form>
+{% endblock %}
